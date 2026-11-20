@@ -113,7 +113,7 @@ const COVERS={
 };
 const LANGCOL={Python:["#2b5876","#4e4376"],TypeScript:["#1d4ed8","#0ea5e9"],"Jupyter Notebook":["#b45309","#f59e0b"],Go:["#0e7490","#14b8a6"],HTML:["#be123c","#f97316"]};
 function genStyle(r){let h=0;for(const c of r.name)h=(h*31+c.charCodeAt(0))%360;const [a,b]=LANGCOL[r.language]||["hsl("+h+",55%,30%)","hsl("+((h+50)%360)+",60%,38%)"];return {background:`linear-gradient(135deg,${a},${b})`,"--a":(h%360)+"deg"}}
-const IMGS=["assets/iguana-1.jpg","assets/iguana-2.jpg","assets/iguana-3.jpg"];
+const IMGS=["assets/iguana-1.jpg","assets/iguana-2.jpg"];
 const {useState,useEffect,useRef,useMemo}=React;
 const html=htm.bind(React.createElement);
 
