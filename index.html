@@ -6,8 +6,8 @@
 <title>George Myller — Projetos</title>
 <meta name="description" content="Projetos open source de George Myller: agentes de IA, automação, dados e ferramentas.">
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--text:#15171c;--muted:#5f6675;--border:#e3e6ee;--accent:#4f46e5;--accent2:#06b6d4;--chip:#eef0ff;--glow:rgba(79,70,229,.18)}
-@media(prefers-color-scheme:dark){:root{--bg:#0a0d14;--card:#121722;--text:#eaeef7;--muted:#97a0b3;--border:#232b3b;--accent:#818cf8;--accent2:#22d3ee;--chip:#1a2140;--glow:rgba(129,140,248,.22)}}
+:root{--bg:#f3f7f2;--card:#fff;--text:#12190f;--muted:#566251;--border:#dce6d8;--accent:#15803d;--accent2:#0e9aa7;--warm:#ea8a0c;--chip:#e6f4e4;--glow:rgba(21,128,61,.2)}
+@media(prefers-color-scheme:dark){:root{--bg:#07100c;--card:#0e1a14;--text:#e8f3e6;--muted:#8fa58f;--border:#1d3025;--accent:#4ade80;--accent2:#2dd4bf;--warm:#fb9a1c;--chip:#12301f;--glow:rgba(74,222,128,.22)}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,sans-serif;overflow-x:hidden}
@@ -15,11 +15,29 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-a
 .blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;pointer-events:none;animation:float 18s ease-in-out infinite}
 .b1{width:420px;height:420px;background:var(--accent);top:-120px;left:-100px}
 .b2{width:380px;height:380px;background:var(--accent2);top:30vh;right:-120px;animation-delay:-6s}
-.b3{width:320px;height:320px;background:#ec4899;bottom:-120px;left:30%;animation-delay:-12s;opacity:.3}
+.b3{width:320px;height:320px;background:var(--warm);bottom:-120px;left:30%;animation-delay:-12s;opacity:.3}
 @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.1)}66%{transform:translate(-40px,70px) scale(.95)}}
-header{padding:80px 0 32px}
+header{padding:72px 0 32px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media(max-width:820px){header{grid-template-columns:1fr;padding-top:48px}}
+.hero-img{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 70px -30px var(--glow),0 0 0 6px color-mix(in srgb,var(--accent) 12%,transparent);animation:bob 7s ease-in-out infinite;aspect-ratio:3/2;background:var(--card)}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08);transition:transform .2s ease-out}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));pointer-events:none}
+.hero-img .tag{position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;font:600 .8rem/1 ui-monospace,monospace;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:6px 10px;border-radius:999px;display:flex;gap:6px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent)}100%{box-shadow:0 0 0 10px transparent}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-10px) rotate(.4deg)}}
+.cover{margin:-22px -22px 6px;height:150px;overflow:hidden;position:relative}
+.cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1);filter:saturate(1.05)}
+.fcard:hover .cover img{transform:scale(1.1)}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--card))}
+.band{position:relative;margin:48px 0 0;border-radius:20px;overflow:hidden;min-height:240px;display:flex;align-items:flex-end;border:1px solid var(--border)}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05)}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,10,7,.85),rgba(4,10,7,.2));z-index:1}
+.band div{position:relative;z-index:2;padding:28px;color:#eaf5e8;max-width:46ch}
+.band h3{margin:0 0 6px;font-size:1.5rem}
+.band p{margin:0;opacity:.85}
 h1{margin:0 0 12px;font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;letter-spacing:-.03em}
-.grad{background:linear-gradient(90deg,var(--accent),var(--accent2),#ec4899,var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2),var(--warm),var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
 @keyframes shift{to{background-position:300% 0}}
 .sub{color:var(--muted);max-width:60ch;margin:0 0 8px;font-size:1.1rem;min-height:1.6em}
 .caret{display:inline-block;width:2px;height:1.1em;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s steps(1) infinite}
@@ -35,7 +53,7 @@ h3.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(
 .fcard{--mx:50%;--my:50%;position:relative;display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:16px;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--border);overflow:hidden;transform-style:preserve-3d;will-change:transform}
 .fcard::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx) var(--my),var(--glow),transparent 70%);opacity:0;transition:opacity .3s}
 .fcard:hover::before{opacity:1}
-.fcard::after{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
+.fcard::after{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--warm));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
 .fcard:hover::after{opacity:1}
 .fcard h2{margin:0;font-size:1.2rem;display:flex;justify-content:space-between;gap:8px}
 .arrow{transition:transform .25s;color:var(--accent)}
@@ -72,6 +90,7 @@ footer a{color:var(--accent)}
 const SNAPSHOT=[{"archived": false, "description": "Workflow autônomo de criação e publicação de conteúdo para Instagram com agentes de IA e CrewAI", "fork": false, "html_url": "https://github.com/GeorgeMyller/agenteinstagram", "language": "Python", "name": "agenteinstagram", "pushed_at": "2025-03-28T21:50:27Z", "stars": 0}, {"archived": false, "description": null, "fork": true, "html_url": "https://github.com/GeorgeMyller/agents-deck", "language": null, "name": "agents-deck", "pushed_at": "2026-10-20T13:47:43Z", "stars": 0}, {"archived": false, "description": "Script de automação em Python para inserção e validação estruturada de links", "fork": false, "html_url": "https://github.com/GeorgeMyller/automacao_insercao_links", "language": "Python", "name": "automacao_insercao_links", "pushed_at": "2025-07-08T13:42:36Z", "stars": 1}, {"archived": false, "description": "Pipeline multi-agente com CrewAI, Whisper, FFmpeg e Streamlit para detecção e criação automática de clipes virais do YouTube", "fork": false, "html_url": "https://github.com/GeorgeMyller/autonomous-viral-factory", "language": "Python", "name": "autonomous-viral-factory", "pushed_at": "2026-11-11T21:36:16Z", "stars": 0}, {"archived": false, "description": "Enterprise SaaS platform for multi-agent AI codebase architecture review, security auditing, Stripe billing & Prometheus", "fork": false, "html_url": "https://github.com/GeorgeMyller/CodeConcilAI", "language": "TypeScript", "name": "CodeConcilAI", "pushed_at": "2026-11-11T21:36:32Z", "stars": 0}, {"archived": false, "description": "Interface analítica para inspeção e visualização de qualidade de projetos de software", "fork": false, "html_url": "https://github.com/GeorgeMyller/CodeVantage", "language": "HTML", "name": "CodeVantage", "pushed_at": "2025-12-06T12:51:08Z", "stars": 0}, {"archived": false, "description": "Sistema modular de visão computacional e automação de interface com detecção HSV em tempo real", "fork": false, "html_url": "https://github.com/GeorgeMyller/Continuador", "language": "Python", "name": "Continuador", "pushed_at": "2026-11-11T21:36:22Z", "stars": 0}, {"archived": false, "description": "Sistema multi-agente de auditoria de código, arquitetura, segurança e viabilidade comercial com CrewAI e Gemini 2.5", "fork": false, "html_url": "https://github.com/GeorgeMyller/CrewAvaliadoraV2", "language": "Python", "name": "CrewAvaliadoraV2", "pushed_at": "2026-11-11T21:36:18Z", "stars": 0}, {"archived": false, "description": "Agents with CrewAI", "fork": false, "html_url": "https://github.com/GeorgeMyller/crews", "language": "Jupyter Notebook", "name": "crews", "pushed_at": "2024-06-09T20:39:40Z", "stars": 2}, {"archived": true, "description": "[Arquivado — Veja GeorgeMyller/CrewAvaliadoraV2] Versão 1 do sistema multi-agente de avaliação de projetos", "fork": false, "html_url": "https://github.com/GeorgeMyller/crew_avaliadora_de_projetos", "language": "Python", "name": "crew_avaliadora_de_projetos", "pushed_at": "2025-08-17T17:22:38Z", "stars": 0}, {"archived": false, "description": "Notebooks e experimentos práticos de agentes de IA e LLMs", "fork": false, "html_url": "https://github.com/GeorgeMyller/cursos_Sandeco", "language": "Jupyter Notebook", "name": "cursos_Sandeco", "pushed_at": "2024-10-30T00:35:23Z", "stars": 0}, {"archived": false, "description": "Repository of my start on Data Analytics", "fork": false, "html_url": "https://github.com/GeorgeMyller/DataAnalytics", "language": "Jupyter Notebook", "name": "DataAnalytics", "pushed_at": "2024-07-06T10:19:29Z", "stars": 0}, {"archived": false, "description": "Utilities for DaVinci Resolve", "fork": true, "html_url": "https://github.com/GeorgeMyller/DaVinci-Resolve-Utilities", "language": null, "name": "DaVinci-Resolve-Utilities", "pushed_at": "2025-02-14T23:10:32Z", "stars": 0}, {"archived": false, "description": "Evolution API is an open-source WhatsApp integration API", "fork": true, "html_url": "https://github.com/GeorgeMyller/evolution-api", "language": null, "name": "evolution-api", "pushed_at": "2025-01-28T21:41:14Z", "stars": 0}, {"archived": false, "description": "Crawler em Python para mapeamento e extração de links em subpáginas web", "fork": false, "html_url": "https://github.com/GeorgeMyller/ExtratorLinksSubpaginas", "language": "Python", "name": "ExtratorLinksSubpaginas", "pushed_at": "2025-06-19T12:47:39Z", "stars": 1}, {"archived": false, "description": "⚡ Interactive AI Command Center & Dynamic GitHub Profile Terminal (tmux + fastfetch + btop SVG)", "fork": false, "html_url": "https://github.com/GeorgeMyller/GeorgeMyller", "language": "Python", "name": "GeorgeMyller", "pushed_at": "2026-11-19T12:16:16Z", "stars": 0}, {"archived": false, "description": null, "fork": false, "html_url": "https://github.com/GeorgeMyller/georgemyller.github.io", "language": "HTML", "name": "georgemyller.github.io", "pushed_at": "2026-11-20T11:35:00Z", "stars": 0}, {"archived": false, "description": "Gerenciador inteligente de grupos de WhatsApp e geração de resumos diários com CrewAI, Evolution API e Streamlit", "fork": false, "html_url": "https://github.com/GeorgeMyller/groups_evo_crewai", "language": "Python", "name": "groups_evo_crewai", "pushed_at": "2026-11-11T21:36:10Z", "stars": 4}, {"archived": true, "description": "[Arquivado — Veja GeorgeMyller/groups_evo_crewai] Automação de grupos WhatsApp com CrewAI e Evolution API", "fork": false, "html_url": "https://github.com/GeorgeMyller/groups_evo_crewai-escolher-envio-para-grupo-ou-para-meu-numero", "language": "Python", "name": "groups_evo_crewai-escolher-envio-para-grupo-ou-para-meu-numero", "pushed_at": "2025-07-17T10:14:03Z", "stars": 2}, {"archived": false, "description": "Ferramenta multi-agente de análise de repositórios e arquitetura de software com React, TypeScript e Google Gemini", "fork": false, "html_url": "https://github.com/GeorgeMyller/Hexa", "language": "TypeScript", "name": "Hexa", "pushed_at": "2026-11-11T21:36:20Z", "stars": 0}, {"archived": false, "description": "Ferramenta para conversão em lote de arquivos HTML para PDF usando Google Chrome headless no macOS.", "fork": false, "html_url": "https://github.com/GeorgeMyller/htmltopdf-batch-mac", "language": "Python", "name": "htmltopdf-batch-mac", "pushed_at": "2025-08-02T09:44:14Z", "stars": 0}, {"archived": false, "description": "Pipeline de super-resolução e upscaling de imagens em Python", "fork": false, "html_url": "https://github.com/GeorgeMyller/image-upscaling-system", "language": "Python", "name": "image-upscaling-system", "pushed_at": "2025-05-25T12:16:01Z", "stars": 0}, {"archived": false, "description": "Get started using GitHub in less than an hour.", "fork": true, "html_url": "https://github.com/GeorgeMyller/introduction-to-github", "language": null, "name": "introduction-to-github", "pushed_at": "2024-10-08T19:57:04Z", "stars": 0}, {"archived": false, "description": "Agente de IA para pesquisa e redação automatizada de publicações técnicas para LinkedIn", "fork": false, "html_url": "https://github.com/GeorgeMyller/linkedinwriter", "language": "Python", "name": "linkedinwriter", "pushed_at": "2024-11-02T15:18:03Z", "stars": 2}, {"archived": false, "description": "Agentes e templates para criação de slides animados com D3.js em HTML", "fork": true, "html_url": "https://github.com/GeorgeMyller/mira-animator", "language": null, "name": "mira-animator", "pushed_at": "2026-07-01T04:10:16Z", "stars": 0}, {"archived": false, "description": "Script Python para migrar pastas e aplicativos do macOS para SSD externo com symlinks automáticos.", "fork": false, "html_url": "https://github.com/GeorgeMyller/move_to_ssd", "language": "Python", "name": "move_to_ssd", "pushed_at": "2025-04-25T19:35:10Z", "stars": 0}, {"archived": false, "description": "CLI profissional para conversão de PDFs em audiobooks naturais usando IA local (Qwen3/Ollama), Marker-PDF e EdgeTTS", "fork": false, "html_url": "https://github.com/GeorgeMyller/PDFAudioBook", "language": "Python", "name": "PDFAudioBook", "pushed_at": "2026-11-11T21:36:34Z", "stars": 2}, {"archived": false, "description": "Global Procurement Analytics & Savings Tracking Pipeline using Python, Google BigQuery, and Looker Studio", "fork": false, "html_url": "https://github.com/GeorgeMyller/Procurement-Savings-Analytics", "language": "Python", "name": "Procurement-Savings-Analytics", "pushed_at": "2026-11-11T21:36:12Z", "stars": 0}, {"archived": false, "description": "Otimizador multi-agente de currículos e análise de compatibilidade ATS com CrewAI", "fork": false, "html_url": "https://github.com/GeorgeMyller/resume_optimizer_crew_v2", "language": "Python", "name": "resume_optimizer_crew_v2", "pushed_at": "2025-04-17T00:31:04Z", "stars": 0}, {"archived": false, "description": "This app make reviws of books, project By AsimovAcademy", "fork": false, "html_url": "https://github.com/GeorgeMyller/reviews-of-books", "language": "Python", "name": "reviews-of-books", "pushed_at": "2024-05-17T11:24:13Z", "stars": 0}, {"archived": false, "description": "Simulador físico 0D/1D de calibração de ECU (remap) e dinamômetro virtual com FastAPI, React, Rust (PyO3) e IA (LAYA.ai)", "fork": false, "html_url": "https://github.com/GeorgeMyller/SimuladorRemap", "language": "Python", "name": "SimuladorRemap", "pushed_at": "2026-11-11T21:36:28Z", "stars": 0}, {"archived": false, "description": "Framework para geração de dados sintéticos via entrevistas conversacionais em harnesses de IA com Pydantic v2 e proteção PII", "fork": false, "html_url": "https://github.com/GeorgeMyller/sintetica", "language": "Python", "name": "sintetica", "pushed_at": "2026-11-11T21:36:26Z", "stars": 0}, {"archived": false, "description": "repositório do site BellaDerme ", "fork": false, "html_url": "https://github.com/GeorgeMyller/siteBellaDerme", "language": null, "name": "siteBellaDerme", "pushed_at": "2025-06-05T00:41:43Z", "stars": 0}, {"archived": false, "description": "Cofre de Agent Skills de alta performance: Spec-Driven Development (SDD), Six Hats Debate, MCP Smart Manager e Google ADK", "fork": false, "html_url": "https://github.com/GeorgeMyller/Skill", "language": "Python", "name": "Skill", "pushed_at": "2026-04-18T09:40:35Z", "stars": 2}, {"archived": false, "description": "Radar for your coding agents (Claude Code, Codex, Antigravity) across all your computers, on iPhone, Apple Watch and Mac.", "fork": false, "html_url": "https://github.com/GeorgeMyller/towerman", "language": "Go", "name": "towerman", "pushed_at": "2026-11-12T12:37:43Z", "stars": 0}, {"archived": false, "description": "Optional end-to-end encrypted relay for Towerman (X25519 + AES-256-GCM), token-protected, one-click deploy on Render.", "fork": false, "html_url": "https://github.com/GeorgeMyller/towerman-relay", "language": "HTML", "name": "towerman-relay", "pushed_at": "2026-11-12T12:33:39Z", "stars": 0}, {"archived": false, "description": "Utilitários de coleta e extração estruturada de dados web em Python", "fork": false, "html_url": "https://github.com/GeorgeMyller/webscraping", "language": "Python", "name": "webscraping", "pushed_at": "2024-10-13T21:41:51Z", "stars": 1}, {"archived": false, "description": "Extrator automatizado de metadados e links de playlists do YouTube em Python", "fork": false, "html_url": "https://github.com/GeorgeMyller/youtube_links_playlist", "language": "Python", "name": "youtube_links_playlist", "pushed_at": "2025-06-24T13:09:54Z", "stars": 1}];
 const EXCLUDE=new Set(["georgemyller.github.io","GeorgeMyller"]);
 const FEATURED=["towerman","CodeConcilAI","SimuladorRemap","autonomous-viral-factory","PDFAudioBook","Skill"];
+const IMGS=["assets/iguana-1.jpg","assets/iguana-2.jpg","assets/iguana-3.jpg"];
 const {useState,useEffect,useRef,useMemo}=React;
 const html=htm.bind(React.createElement);
 
@@ -94,6 +113,23 @@ function Typing({text}){
   useEffect(()=>{if(i>=text.length)return;const t=setTimeout(()=>setI(i+1),28);return()=>clearTimeout(t)},[i,text]);
   return html`<p class="sub">${text.slice(0,i)}<span class="caret"></span></p>`;
 }
+function Hero(){
+  const ref=useRef(null);
+  const move=e=>{const b=e.currentTarget.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
+    ref.current.style.transform=`scale(1.12) translate(${-x*14}px,${-y*14}px)`};
+  const leave=()=>{ref.current.style.transform=""};
+  return html`<div class="hero-img" onMouseMove=${move} onMouseLeave=${leave}>
+    <img ref=${ref} src=${IMGS[0]} alt="Iguana verde programando em um laptop" loading="eager"/>
+    <span class="tag"><span class="dot"></span>building in public</span>
+  </div>`;
+}
+function Band(){
+  const [ref,on]=useReveal();
+  return html`<section ref=${ref} class=${"band reveal"+(on?" in":"")}>
+    <img src=${IMGS[1]} alt="Iguana diante de monitores" loading="lazy"/>
+    <div><h3>Código, dados e agentes</h3><p>Construo ferramentas que automatizam o trabalho repetitivo e dão clareza aos números.</p></div>
+  </section>`;
+}
 function Stat({value,label}){const n=useCount(value);return html`<div class="stat"><b>${n}</b><span>${label}</span></div>`}
 
 function FCard({r,i}){
@@ -106,6 +142,7 @@ function FCard({r,i}){
   };
   const leave=e=>{e.currentTarget.style.transform=""};
   return html`<a ref=${ref} class=${"fcard reveal"+(on?" in":"")} style=${{"--d":i*90+"ms"}} href=${r.html_url} target="_blank" rel="noopener" onMouseMove=${move} onMouseLeave=${leave}>
+    <div class="cover"><img src=${IMGS[i%3]} alt="" loading="lazy"/></div>
     <h2><span>${r.name}</span><span class="arrow">↗</span></h2>
     <p>${r.description||"Sem descrição."}</p>
     <div class="meta">${r.language&&html`<span class="chip">${r.language}</span>`}${r.stars>0&&html`<span class="chip star">★ ${r.stars}</span>`}</div>
@@ -131,12 +168,16 @@ function App(){
   const list=repos.filter(r=>(!lang||r.language===lang)&&(r.name+" "+(r.description||"")).toLowerCase().includes(q.toLowerCase()));
   return html`<div class="wrap">
     <header>
+      <div>
       <h1>Olá, eu sou <span class="grad">George Myller</span></h1>
       <${Typing} text="Agentes de IA, automação, análise de dados e ferramentas open source."/>
       <div class="stats"><${Stat} value=${repos.length} label="projetos públicos"/><${Stat} value=${langs.length} label="linguagens"/><${Stat} value=${repos.reduce((s,r)=>s+(r.stars||0),0)} label="estrelas"/></div>
+      </div>
+      <${Hero}/>
     </header>
     <h3 class="sec">Destaques</h3>
     <section class="featured">${featured.map((r,i)=>html`<${FCard} key=${r.name} r=${r} i=${i}/>`)}</section>
+    <${Band}/>
     <h3 class="sec">Todos os projetos</h3>
     <div class="tools">
       <input type="search" placeholder="Buscar projeto…" aria-label="Buscar projeto" value=${q} onInput=${e=>setQ(e.target.value)}/>
