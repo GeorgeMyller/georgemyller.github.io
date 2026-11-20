@@ -3,15 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>George Myller</title>
+<title>George Myller — Projetos</title>
+<meta name="description" content="Projetos open source de George Myller: agentes de IA, automação, dados e ferramentas.">
 <style>
-body{font-family:system-ui,sans-serif;max-width:640px;margin:15vh auto;padding:0 16px;line-height:1.5}
-a{color:#0969da}
+:root{--bg:#fafafa;--card:#fff;--text:#1a1a1a;--muted:#667085;--border:#e4e7ec;--accent:#2563eb;--chip:#eef2ff}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1117;--card:#161b22;--text:#e6edf3;--muted:#8b949e;--border:#30363d;--accent:#58a6ff;--chip:#1c2a45}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{padding:56px 0 24px}
+h1{margin:0 0 8px;font-size:2.2rem}
+header p{margin:0;color:var(--muted);max-width:60ch}
+header a{color:var(--accent)}
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 16px}
+input,select{padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);font:inherit}
+input{flex:1;min-width:200px}
+.count{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-bottom:48px}
+.card{display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--card);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card h2{margin:0;font-size:1.05rem;word-break:break-word}
+.card p{margin:0;color:var(--muted);font-size:.92rem;flex:1}
+.meta{display:flex;gap:8px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.chip{background:var(--chip);color:var(--accent);padding:2px 8px;border-radius:999px}
+.arch{opacity:.65}
+footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:.85rem}
 </style>
 </head>
 <body>
+<div class="wrap">
+<header>
 <h1>George Myller</h1>
-<p>Site em construção.</p>
-<p><a href="https://github.com/GeorgeMyller">GitHub</a></p>
+<p>Projetos públicos: agentes de IA, automação, análise de dados e ferramentas. Código em <a href="https://github.com/GeorgeMyller">github.com/GeorgeMyller</a>.</p>
+</header>
+<div class="tools">
+<input id="q" type="search" placeholder="Buscar projeto…" aria-label="Buscar projeto">
+<select id="lang" aria-label="Filtrar por linguagem"><option value="">Todas as linguagens</option></select>
+</div>
+<div class="count" id="count"></div>
+<main class="grid" id="grid"></main>
+<footer>Lista gerada a partir da API pública do GitHub.</footer>
+</div>
+<script>
+const SNAPSHOT=[{"archived": false, "description": "Workflow autônomo de criação e publicação de conteúdo para Instagram com agentes de IA e CrewAI", "fork": false, "html_url": "https://github.com/GeorgeMyller/agenteinstagram", "language": "Python", "name": "agenteinstagram", "pushed_at": "2025-03-28T21:50:27Z", "stars": 0}, {"archived": false, "description": null, "fork": true, "html_url": "https://github.com/GeorgeMyller/agents-deck", "language": null, "name": "agents-deck", "pushed_at": "2026-10-20T13:47:43Z", "stars": 0}, {"archived": false, "description": "Script de automação em Python para inserção e validação estruturada de links", "fork": false, "html_url": "https://github.com/GeorgeMyller/automacao_insercao_links", "language": "Python", "name": "automacao_insercao_links", "pushed_at": "2025-07-08T13:42:36Z", "stars": 1}, {"archived": false, "description": "Pipeline multi-agente com CrewAI, Whisper, FFmpeg e Streamlit para detecção e criação automática de clipes virais do YouTube", "fork": false, "html_url": "https://github.com/GeorgeMyller/autonomous-viral-factory", "language": "Python", "name": "autonomous-viral-factory", "pushed_at": "2026-11-11T21:36:16Z", "stars": 0}, {"archived": false, "description": "Enterprise SaaS platform for multi-agent AI codebase architecture review, security auditing, Stripe billing & Prometheus", "fork": false, "html_url": "https://github.com/GeorgeMyller/CodeConcilAI", "language": "TypeScript", "name": "CodeConcilAI", "pushed_at": "2026-11-11T21:36:32Z", "stars": 0}, {"archived": false, "description": "Interface analítica para inspeção e visualização de qualidade de projetos de software", "fork": false, "html_url": "https://github.com/GeorgeMyller/CodeVantage", "language": "HTML", "name": "CodeVantage", "pushed_at": "2025-12-06T12:51:08Z", "stars": 0}, {"archived": false, "description": "Sistema modular de visão computacional e automação de interface com detecção HSV em tempo real", "fork": false, "html_url": "https://github.com/GeorgeMyller/Continuador", "language": "Python", "name": "Continuador", "pushed_at": "2026-11-11T21:36:22Z", "stars": 0}, {"archived": false, "description": "Sistema multi-agente de auditoria de código, arquitetura, segurança e viabilidade comercial com CrewAI e Gemini 2.5", "fork": false, "html_url": "https://github.com/GeorgeMyller/CrewAvaliadoraV2", "language": "Python", "name": "CrewAvaliadoraV2", "pushed_at": "2026-11-11T21:36:18Z", "stars": 0}, {"archived": false, "description": "Agents with CrewAI", "fork": false, "html_url": "https://github.com/GeorgeMyller/crews", "language": "Jupyter Notebook", "name": "crews", "pushed_at": "2024-06-09T20:39:40Z", "stars": 2}, {"archived": true, "description": "[Arquivado — Veja GeorgeMyller/CrewAvaliadoraV2] Versão 1 do sistema multi-agente de avaliação de projetos", "fork": false, "html_url": "https://github.com/GeorgeMyller/crew_avaliadora_de_projetos", "language": "Python", "name": "crew_avaliadora_de_projetos", "pushed_at": "2025-08-17T17:22:38Z", "stars": 0}, {"archived": false, "description": "Notebooks e experimentos práticos de agentes de IA e LLMs", "fork": false, "html_url": "https://github.com/GeorgeMyller/cursos_Sandeco", "language": "Jupyter Notebook", "name": "cursos_Sandeco", "pushed_at": "2024-10-30T00:35:23Z", "stars": 0}, {"archived": false, "description": "Repository of my start on Data Analytics", "fork": false, "html_url": "https://github.com/GeorgeMyller/DataAnalytics", "language": "Jupyter Notebook", "name": "DataAnalytics", "pushed_at": "2024-07-06T10:19:29Z", "stars": 0}, {"archived": false, "description": "Utilities for DaVinci Resolve", "fork": true, "html_url": "https://github.com/GeorgeMyller/DaVinci-Resolve-Utilities", "language": null, "name": "DaVinci-Resolve-Utilities", "pushed_at": "2025-02-14T23:10:32Z", "stars": 0}, {"archived": false, "description": "Evolution API is an open-source WhatsApp integration API", "fork": true, "html_url": "https://github.com/GeorgeMyller/evolution-api", "language": null, "name": "evolution-api", "pushed_at": "2025-01-28T21:41:14Z", "stars": 0}, {"archived": false, "description": "Crawler em Python para mapeamento e extração de links em subpáginas web", "fork": false, "html_url": "https://github.com/GeorgeMyller/ExtratorLinksSubpaginas", "language": "Python", "name": "ExtratorLinksSubpaginas", "pushed_at": "2025-06-19T12:47:39Z", "stars": 1}, {"archived": false, "description": "⚡ Interactive AI Command Center & Dynamic GitHub Profile Terminal (tmux + fastfetch + btop SVG)", "fork": false, "html_url": "https://github.com/GeorgeMyller/GeorgeMyller", "language": "Python", "name": "GeorgeMyller", "pushed_at": "2026-11-19T12:16:16Z", "stars": 0}, {"archived": false, "description": null, "fork": false, "html_url": "https://github.com/GeorgeMyller/georgemyller.github.io", "language": "HTML", "name": "georgemyller.github.io", "pushed_at": "2026-11-20T11:27:46Z", "stars": 0}, {"archived": false, "description": "Gerenciador inteligente de grupos de WhatsApp e geração de resumos diários com CrewAI, Evolution API e Streamlit", "fork": false, "html_url": "https://github.com/GeorgeMyller/groups_evo_crewai", "language": "Python", "name": "groups_evo_crewai", "pushed_at": "2026-11-11T21:36:10Z", "stars": 4}, {"archived": true, "description": "[Arquivado — Veja GeorgeMyller/groups_evo_crewai] Automação de grupos WhatsApp com CrewAI e Evolution API", "fork": false, "html_url": "https://github.com/GeorgeMyller/groups_evo_crewai-escolher-envio-para-grupo-ou-para-meu-numero", "language": "Python", "name": "groups_evo_crewai-escolher-envio-para-grupo-ou-para-meu-numero", "pushed_at": "2025-07-17T10:14:03Z", "stars": 2}, {"archived": false, "description": "Ferramenta multi-agente de análise de repositórios e arquitetura de software com React, TypeScript e Google Gemini", "fork": false, "html_url": "https://github.com/GeorgeMyller/Hexa", "language": "TypeScript", "name": "Hexa", "pushed_at": "2026-11-11T21:36:20Z", "stars": 0}, {"archived": false, "description": "Ferramenta para conversão em lote de arquivos HTML para PDF usando Google Chrome headless no macOS.", "fork": false, "html_url": "https://github.com/GeorgeMyller/htmltopdf-batch-mac", "language": "Python", "name": "htmltopdf-batch-mac", "pushed_at": "2025-08-02T09:44:14Z", "stars": 0}, {"archived": false, "description": "Pipeline de super-resolução e upscaling de imagens em Python", "fork": false, "html_url": "https://github.com/GeorgeMyller/image-upscaling-system", "language": "Python", "name": "image-upscaling-system", "pushed_at": "2025-05-25T12:16:01Z", "stars": 0}, {"archived": false, "description": "Get started using GitHub in less than an hour.", "fork": true, "html_url": "https://github.com/GeorgeMyller/introduction-to-github", "language": null, "name": "introduction-to-github", "pushed_at": "2024-10-08T19:57:04Z", "stars": 0}, {"archived": false, "description": "Agente de IA para pesquisa e redação automatizada de publicações técnicas para LinkedIn", "fork": false, "html_url": "https://github.com/GeorgeMyller/linkedinwriter", "language": "Python", "name": "linkedinwriter", "pushed_at": "2024-11-02T15:18:03Z", "stars": 2}, {"archived": false, "description": "Agentes e templates para criação de slides animados com D3.js em HTML", "fork": true, "html_url": "https://github.com/GeorgeMyller/mira-animator", "language": null, "name": "mira-animator", "pushed_at": "2026-07-01T04:10:16Z", "stars": 0}, {"archived": false, "description": "Script Python para migrar pastas e aplicativos do macOS para SSD externo com symlinks automáticos.", "fork": false, "html_url": "https://github.com/GeorgeMyller/move_to_ssd", "language": "Python", "name": "move_to_ssd", "pushed_at": "2025-04-25T19:35:10Z", "stars": 0}, {"archived": false, "description": "CLI profissional para conversão de PDFs em audiobooks naturais usando IA local (Qwen3/Ollama), Marker-PDF e EdgeTTS", "fork": false, "html_url": "https://github.com/GeorgeMyller/PDFAudioBook", "language": "Python", "name": "PDFAudioBook", "pushed_at": "2026-11-11T21:36:34Z", "stars": 2}, {"archived": false, "description": "Global Procurement Analytics & Savings Tracking Pipeline using Python, Google BigQuery, and Looker Studio", "fork": false, "html_url": "https://github.com/GeorgeMyller/Procurement-Savings-Analytics", "language": "Python", "name": "Procurement-Savings-Analytics", "pushed_at": "2026-11-11T21:36:12Z", "stars": 0}, {"archived": false, "description": "Otimizador multi-agente de currículos e análise de compatibilidade ATS com CrewAI", "fork": false, "html_url": "https://github.com/GeorgeMyller/resume_optimizer_crew_v2", "language": "Python", "name": "resume_optimizer_crew_v2", "pushed_at": "2025-04-17T00:31:04Z", "stars": 0}, {"archived": false, "description": "This app make reviws of books, project By AsimovAcademy", "fork": false, "html_url": "https://github.com/GeorgeMyller/reviews-of-books", "language": "Python", "name": "reviews-of-books", "pushed_at": "2024-05-17T11:24:13Z", "stars": 0}, {"archived": false, "description": "Simulador físico 0D/1D de calibração de ECU (remap) e dinamômetro virtual com FastAPI, React, Rust (PyO3) e IA (LAYA.ai)", "fork": false, "html_url": "https://github.com/GeorgeMyller/SimuladorRemap", "language": "Python", "name": "SimuladorRemap", "pushed_at": "2026-11-11T21:36:28Z", "stars": 0}, {"archived": false, "description": "Framework para geração de dados sintéticos via entrevistas conversacionais em harnesses de IA com Pydantic v2 e proteção PII", "fork": false, "html_url": "https://github.com/GeorgeMyller/sintetica", "language": "Python", "name": "sintetica", "pushed_at": "2026-11-11T21:36:26Z", "stars": 0}, {"archived": false, "description": "repositório do site BellaDerme ", "fork": false, "html_url": "https://github.com/GeorgeMyller/siteBellaDerme", "language": null, "name": "siteBellaDerme", "pushed_at": "2025-06-05T00:41:43Z", "stars": 0}, {"archived": false, "description": "Cofre de Agent Skills de alta performance: Spec-Driven Development (SDD), Six Hats Debate, MCP Smart Manager e Google ADK", "fork": false, "html_url": "https://github.com/GeorgeMyller/Skill", "language": "Python", "name": "Skill", "pushed_at": "2026-04-18T09:40:35Z", "stars": 2}, {"archived": false, "description": "Radar for your coding agents (Claude Code, Codex, Antigravity) across all your computers, on iPhone, Apple Watch and Mac.", "fork": false, "html_url": "https://github.com/GeorgeMyller/towerman", "language": "Go", "name": "towerman", "pushed_at": "2026-11-12T12:37:43Z", "stars": 0}, {"archived": false, "description": "Optional end-to-end encrypted relay for Towerman (X25519 + AES-256-GCM), token-protected, one-click deploy on Render.", "fork": false, "html_url": "https://github.com/GeorgeMyller/towerman-relay", "language": "HTML", "name": "towerman-relay", "pushed_at": "2026-11-12T12:33:39Z", "stars": 0}, {"archived": false, "description": "Utilitários de coleta e extração estruturada de dados web em Python", "fork": false, "html_url": "https://github.com/GeorgeMyller/webscraping", "language": "Python", "name": "webscraping", "pushed_at": "2024-10-13T21:41:51Z", "stars": 1}, {"archived": false, "description": "Extrator automatizado de metadados e links de playlists do YouTube em Python", "fork": false, "html_url": "https://github.com/GeorgeMyller/youtube_links_playlist", "language": "Python", "name": "youtube_links_playlist", "pushed_at": "2025-06-24T13:09:54Z", "stars": 1}];
+const EXCLUDE=new Set(["georgemyller.github.io","GeorgeMyller"]);
+let repos=[];
+const $=id=>document.getElementById(id);
+function norm(list){return list.filter(r=>!r.fork&&!EXCLUDE.has(r.name)).sort((a,b)=>new Date(b.pushed_at)-new Date(a.pushed_at))}
+function render(){
+  const q=$("q").value.toLowerCase(),l=$("lang").value;
+  const list=repos.filter(r=>(!l||r.language===l)&&(r.name+" "+(r.description||"")).toLowerCase().includes(q));
+  $("count").textContent=list.length+" projeto(s)";
+  $("grid").replaceChildren(...list.map(r=>{
+    const a=document.createElement("a");a.className="card"+(r.archived||(r.description||"").startsWith("[Arquivado")?" arch":"");
+    a.href=r.html_url;a.target="_blank";a.rel="noopener";
+    const h=document.createElement("h2");h.textContent=r.name;
+    const p=document.createElement("p");p.textContent=r.description||"Sem descrição.";
+    const m=document.createElement("div");m.className="meta";
+    if(r.language){const c=document.createElement("span");c.className="chip";c.textContent=r.language;m.append(c)}
+    if(r.stars){const s=document.createElement("span");s.textContent="★ "+r.stars;m.append(s)}
+    const d=document.createElement("span");d.textContent="Atualizado em "+new Date(r.pushed_at).toLocaleDateString("pt-BR");m.append(d);
+    a.append(h,p,m);return a}));
+}
+function setup(list){
+  repos=norm(list);
+  const langs=[...new Set(repos.map(r=>r.language).filter(Boolean))].sort();
+  const cur=$("lang").value;
+  $("lang").replaceChildren(new Option("Todas as linguagens",""),...langs.map(x=>new Option(x,x)));
+  $("lang").value=langs.includes(cur)?cur:"";
+  render();
+}
+$("q").addEventListener("input",render);$("lang").addEventListener("change",render);
+setup(SNAPSHOT);
+fetch("https://api.github.com/users/GeorgeMyller/repos?per_page=100&type=owner")
+ .then(r=>r.ok?r.json():Promise.reject())
+ .then(j=>setup(j.map(r=>({name:r.name,description:r.description,html_url:r.html_url,language:r.language,stars:r.stargazers_count,fork:r.fork,archived:r.archived,pushed_at:r.pushed_at}))))
+ .catch(()=>{});
+</script>
 </body>
 </html>
